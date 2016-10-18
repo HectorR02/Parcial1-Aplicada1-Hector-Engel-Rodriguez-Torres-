@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P1_Ap1_Hector_Engel_Rodriguez_Torres.Consultas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace P1_Ap1_Hector_Engel_Rodriguez_Torres
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ConsultaCLientes());
         }
     }
 }

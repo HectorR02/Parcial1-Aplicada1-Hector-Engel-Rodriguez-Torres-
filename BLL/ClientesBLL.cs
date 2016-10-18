@@ -63,7 +63,7 @@ namespace BLL
             }
             return resultado;
         }
-        public static List<Clientes> GetLista()
+        public static List<Clientes> GetList()
         {
             var lista = new List<Clientes>();
             using (var conexion = new Parcial1Aplicada1DB())
@@ -77,6 +77,62 @@ namespace BLL
                 }
             }
             return lista;
+        }
+
+
+        public static List<Clientes> GetList(string Nombres)
+        {
+            var lista = new List<Clientes>();
+            using(var conexion = new Parcial1Aplicada1DB())
+            {
+                try
+                {
+                    lista = conexion.Cliente.Where(x => x.Nombres.Equals(Nombres)).ToList();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            return lista;
+        }
+        public static List<Clientes> GetList(string Nombres, DateTime Desde, DateTime Hasta)
+        {
+            var lista = new List<Clientes>();
+            using (var conexion = new Parcial1Aplicada1DB())
+            {
+                try
+                {
+                    lista = conexion.Cliente.Where(x => x.Nombres.Equals(Nombres) && x.FechaNacimiento >= Desde && x.FechaNacimiento <= Hasta).ToList();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            return lista;
+        }
+        public static List<Clientes> GetList(DateTime Desde, DateTime Hasta)
+        {
+            var lista = new List<Clientes>();
+            using (var conexion = new Parcial1Aplicada1DB())
+            {
+                try
+                {
+                    lista = conexion.Cliente.Where(x => x.FechaNacimiento >= Desde && x.FechaNacimiento <= Hasta).ToList();
+                }
+                catch (Exception) { throw; }
+            }
+            return lista;
+        }
+        public static int UltimoCliente()
+        {
+            int ultimo;
+            using (var conexion = new Parcial1Aplicada1DB())
+            {
+                    ultimo = conexion.Cliente.Max(x => x.ClienteId);
+            }
+            return ultimo;
         }
     }
 }

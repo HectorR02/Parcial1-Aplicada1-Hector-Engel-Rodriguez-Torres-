@@ -10,7 +10,7 @@ namespace Entidades
 
         public string Nombres { get; set; }
 
-        public DateTime MyProperty { get; set; }
+        public DateTime FechaNacimiento { get; set; }
 
         public int LimiteCredito { get; set; }
 }
